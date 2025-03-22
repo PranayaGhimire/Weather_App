@@ -64,7 +64,11 @@ const Weather = () => {
     <div className=' flex flex-col justify-evenly items-center bg-gradient-to-t from-blue-800 to-purple-800 h-full  w-full rounded-lg '>
         <h1 className='text-4xl text-white font-bold '>Weather App</h1>
       <div className='flex justify-evenly gap-3 items-center '>
-        <input className='bg-white rounded-lg border-none outline-none p-2' ref={inputRef} type="text" placeholder='Search' />
+        <input 
+        onKeyDown={(e)=>{
+            if(e.key==='Enter') search(inputRef.current.value);
+        }}
+        className='bg-white rounded-lg border-none outline-none p-2' ref={inputRef} type="text" placeholder='Search' />
         <img src={searchIcon} alt="" onClick={()=>search(inputRef.current.value)} className='bg-white rounded-full p-2 cursor-pointer hover:bg-gray-900' />
       </div>
       {weatherData?<>
